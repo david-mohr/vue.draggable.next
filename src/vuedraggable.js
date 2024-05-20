@@ -318,7 +318,7 @@ const draggableComponent = defineComponent({
       // remove nodes
       evt.items.forEach(e => removeNode(e));
       // insert elements
-      const newIndex = this.getVmIndexFromDomIndex(evt.newIndex);
+      const newIndex = this.getVmIndexFromDomIndex(evt.newIndicies[0].index);
       this.spliceList(newIndex, 0, ...elements);
       // emit change
       const added = elements.map((element, index) => ({
@@ -441,7 +441,7 @@ const draggableComponent = defineComponent({
       );
       // move items
       const oldIndicies = itemsWithIndex.map(({ index }) => index - headerSize);
-      const newIndex = this.getVmIndexFromDomIndex(evt.newIndex);
+      const newIndex = this.getVmIndexFromDomIndex(evt.newIndicies[0].index);
       // note: Array.from = prevent sort change side effect
       this.updatePositions(Array.from(oldIndicies), newIndex);
       // emit change
